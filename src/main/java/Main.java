@@ -1,23 +1,27 @@
 public class Main {
     public static void main(String[] args) {
 
-        AnimalList list = new AnimalList();
+        UniversalLinkedList<Plant> plantList = new UniversalLinkedList();
+        UniversalLinkedList<Animal> animalList = new UniversalLinkedList();
 
-        System.out.println(list);
 
-        list.add(new Animal("Hund"));
+        plantList.add(new Plant("Blume"));
 
-        System.out.println(list);
+        System.out.println(animalList);
 
-        list.add(new Animal("Katze"));
+        plantList.add(new Plant("Baum"));
 
-        System.out.println(list);
+        System.out.println(animalList);
 
-        list.add(new Animal("Katze"));
+        animalList.add(new Animal("Katze"));
 
-        System.out.println(list);
+        System.out.println(animalList);
 
-        list.remove(new Animal("Katze"));
-        System.out.println(list);
+        animalList.remove(new Animal("Katze"));
+        System.out.println(animalList);
+
+
+        System.out.println(plantList);
+        System.out.println(animalList);
     }
 }

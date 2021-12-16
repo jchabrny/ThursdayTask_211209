@@ -1,23 +1,22 @@
 import java.util.Objects;
 
-public class AnimalListItem {
-    private Animal value;
-    private AnimalListItem next;
+public class UniversalLinkedListItem<T> {
+    private T value;
+    private UniversalLinkedListItem<T> next;
 
-    public AnimalListItem(Animal value) {
-
+    public UniversalLinkedListItem(T value) {
         this.value = value;
     }
 
-    public Animal getValue() {
+    public T getValue() {
         return value;
     }
 
-    public AnimalListItem getNext() {
+    public UniversalLinkedListItem<T> getNext() {
         return next;
     }
 
-    public void setNext(AnimalListItem next) {
+    public void setNext(UniversalLinkedListItem<T> next) {
         this.next = next;
     }
 
@@ -25,7 +24,7 @@ public class AnimalListItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AnimalListItem that = (AnimalListItem) o;
+        UniversalLinkedListItem<?> that = (UniversalLinkedListItem<?>) o;
         return Objects.equals(value, that.value) && Objects.equals(next, that.next);
     }
 

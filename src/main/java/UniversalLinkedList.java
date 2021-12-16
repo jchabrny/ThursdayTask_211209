@@ -1,31 +1,31 @@
-public class AnimalList {
-    private AnimalListItem head;
+public class UniversalLinkedList<T> {
+    private UniversalLinkedListItem<T> head;
 
-    public void add(Animal animal) {
+    public void add(T v) {
         if (head == null) {
-            head = new AnimalListItem(animal);
+            head = new UniversalLinkedListItem<T>(v);
         } else {
-            AnimalListItem current = head;
+            UniversalLinkedListItem<T> current = head;
             while (current.getNext() != null) {
                 current = current.getNext();
             }
 
-            current.setNext(new AnimalListItem(animal));
+            current.setNext(new UniversalLinkedListItem<T>(v));
         }
     }
 
-    public void remove(Animal animal) {
-        while (head != null && head.getValue().equals(animal)) {
+    public void remove(T v) {
+        while (head != null && head.getValue().equals(v)) {
             head = head.getNext();
         }
 
         if (head == null) {
             return;
         }
-        AnimalListItem current = head;
+        UniversalLinkedListItem<T> current = head;
 
         while (current.getNext() != null) {
-            if (current.getNext().getValue().equals(animal)) {
+            if (current.getNext().getValue().equals(v)) {
                 current.setNext(current.getNext().getNext());
             } else {
                 current = current.getNext();
@@ -41,7 +41,7 @@ public class AnimalList {
         }
         StringBuilder builder = new StringBuilder(head.toString());
 
-        AnimalListItem current = head.getNext();
+        UniversalLinkedListItem<T> current = head.getNext();
 
         while (current != null) {
             builder.append(" -> ").append(current);
