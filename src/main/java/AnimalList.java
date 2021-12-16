@@ -1,30 +1,55 @@
 public class AnimalList {
     private AnimalListItem head;
 
-    public AnimalList(AnimalListItem head) {
-        this.head = head;
-    }
+    public void add(Animal animal) {
+        if (head == null) {
+            head = new AnimalListItem(animal);
+        } else {
+            AnimalListItem current = head;
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
 
-    public void next(AnimalListItem item){
-      if(head.getNext() == null) {
-          head.setNext(item);
-          return;
-    }
-
-      AnimalListItem nextItem = head.getNext();
-      //letztes glied in der kette
-        while (nextItem.getNext() != null) {
-            nextItem = nextItem.getNext();
+            current.setNext(new AnimalListItem(animal));
         }
-        nextItem.setNext(item);
     }
+
+    public void remove(Animal animal) {
+        while (head != null && head.getValue().equals(animal)) {
+            head = head.getNext();
+        }
+
+        if (head == null) {
+            return;
+        }
+        AnimalListItem current = head;
+
+        while (current.getNext() != null) {
+            if (current.getNext().getValue().equals(animal)) {
+                current.setNext(current.getNext().getNext());
+            } else {
+                current = current.getNext();
+            }
+        }
+    }
+
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("AnimalList = " + head);
-        stringBuilder.append(" || " + head.getNext());
-        return stringBuilder.toString();
+        if (head == null) {
+            return "List is empty!";
+        }
+        StringBuilder builder = new StringBuilder(head.toString());
+
+        AnimalListItem current = head.getNext();
+
+        while (current != null) {
+            builder.append(" -> ").append(current);
+            current = current.getNext();
+        }
+
+        return builder.toString();
     }
 }
+
 
